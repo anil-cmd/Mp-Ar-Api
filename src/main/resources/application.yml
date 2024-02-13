@@ -1,0 +1,7 @@
+server:
+  port: 7779
+spring:
+  config:
+    import: optional:configserver:http://localhost:9091
+  application:
+    name: AR-API
