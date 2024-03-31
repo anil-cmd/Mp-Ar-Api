@@ -14,7 +14,7 @@ import org.springframework.web.client.RestTemplate;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import in.anil.binding.SsaRequestForm;
 import in.anil.binding.SsaResponse;
-import in.anil.entity.ApplicationDetails;
+import in.anil.entity.CitizenApplicationDetails;
 import in.anil.repo.ApplicationRepo;
 
 @Service
@@ -32,7 +32,7 @@ public class ApplicationServiceImpl implements ApplicationService {
 		headers.setContentType(MediaType.APPLICATION_JSON);
 		
 		Map<String, String> requestBody = new HashMap<>();
-		requestBody.put("name", ssaRequestForm.getName());
+		requestBody.put("name", ssaRequestForm.getFullName());
 		requestBody.put("dob", ssaRequestForm.getDob());
 		requestBody.put("ssn", ssaRequestForm.getSsn());
 		
@@ -59,9 +59,9 @@ public class ApplicationServiceImpl implements ApplicationService {
 		
 		SsaResponse response = getStateOfCitizen(ssaRequestForm);
 		if(response.getStateName().equalsIgnoreCase("Rhode Island")) {
-			ApplicationDetails applicationDetails = new ApplicationDetails();
+			CitizenApplicationDetails applicationDetails = new CitizenApplicationDetails();
 			BeanUtils.copyProperties(ssaRequestForm, applicationDetails);
-			ApplicationDetails savedApplicationDetails = applicationRepo.save(applicationDetails);
+			CitizenApplicationDetails savedApplicationDetails = applicationRepo.save(applicationDetails);
 			if(savedApplicationDetails.getSsn().equalsIgnoreCase(ssaRequestForm.getSsn())) {
 				return true;
 			}

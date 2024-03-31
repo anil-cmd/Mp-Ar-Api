@@ -1,19 +1,26 @@
 package in.anil.binding;
 
+
 public class SsaRequestForm {
 	
-	private String name;
+	private String fullName;
 	
 	private String dob;
 	
 	private String ssn;
+	
+	private String gender;
+	
+	private Integer userId;
+	
+	private Integer planId;
 
-	public String getName() {
-		return name;
+	public String getFullName() {
+		return fullName;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setFullName(String fullName) {
+		this.fullName = fullName;
 	}
 
 	public String getDob() {
@@ -31,6 +38,32 @@ public class SsaRequestForm {
 	public void setSsn(String ssn) {
 		this.ssn = ssn;
 	}
+
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
+	public Integer getUserId() {
+		return userId;
+	}
+
+	public void setUserId(Integer userId) {
+		this.userId = userId;
+	}
+
+	public Integer getPlanId() {
+		return planId;
+	}
+
+	public void setPlanId(Integer planId) {
+		this.planId = planId;
+	}
+	
+	
 	
 	
 
